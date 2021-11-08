@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children : [Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12.sp),
+            borderRadius: BorderRadius.circular(12),
             color : Colors.greenAccent
             ),
           child: IconButton(
@@ -136,7 +136,7 @@ class _BuilderState extends State<Builder> {
       margin: const EdgeInsets.only(top:10,bottom: 15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.shade200
+        color: Colors.grey.shade300
         //border: Border.all(color: Colors.greenAccent)
       ),
       height: MediaQuery.of(context).size.height*0.27,

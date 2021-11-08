@@ -49,7 +49,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: (currentPage != pages[1])? _myAppBar(context):null,
       bottomNavigationBar: _bNavBar(context,selectdIndex,changePage),
       body: currentPage,
@@ -61,9 +61,18 @@ PreferredSizeWidget _myAppBar(context){
   return AppBar(
     title: Text("Bookshelf",style: GoogleFonts.montserrat(fontSize: 18,fontWeight: FontWeight.w500),),
     centerTitle: true,
-    backgroundColor: Colors.greenAccent,
+
     foregroundColor: Colors.black,
-    shape: BeveledRectangleBorder(side:BorderSide(color: Colors.deepPurpleAccent,width: 1.5),borderRadius: BorderRadius.circular(10)),
+    flexibleSpace: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin : Alignment.topLeft,
+          end: Alignment.bottomLeft,
+          colors: [Colors.pink,Colors.blue.shade400],
+        )
+      ),
+    ),
+    shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
   );
 }
 
