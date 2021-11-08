@@ -1,0 +1,21 @@
+{
+    "topChartsFree" : [
+            "oXZLDwAAQBAJ",
+            "Qgn5DwAAQBAJ",
+            "v2cNEAAAQBAJ"
+    ], 
+    "topChartsPaid" : [
+        "oXZLDwAAQBAJ",
+        "Qgn5DwAAQBAJ",
+        "v2cNEAAAQBAJ"
+
+    ],
+    "genere" :{
+        "Entertainment" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
+        "ScienceFiction" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
+        "Education" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
+        "Mysteries" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
+        "Fiction" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
+        "Comics" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"]
+    }
+}
