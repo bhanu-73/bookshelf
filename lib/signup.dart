@@ -1,21 +1,27 @@
+import 'dart:async';
 import 'dart:ui';
 
+import 'package:bookshelf/file_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  SignUpPage({ Key? key }) : super(key: key);
 
-  @override
-  _SignUpPageState createState() => _SignUpPageState();
-}
+  var _nameController = TextEditingController();
+  var _passwordController = TextEditingController();
+  var _emailController = TextEditingController();
+  var _confirmPasswordController = TextEditingController();
+  
+  final successSnackBar = SnackBar(content: Text("Successfully Registered.Please Sign In",style: GoogleFonts.montserrat(fontSize:16,color:Colors.black),),backgroundColor:Colors.tealAccent.shade400);
+  final passwordSnackBar = SnackBar(content: Text("Password does not match",style: GoogleFonts.montserrat(fontSize:16,color:Colors.black),),backgroundColor:Colors.tealAccent.shade400);
 
-class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('asset/book11.jpg'), fit: BoxFit.fill)),
+              image: AssetImage('assets/book11.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
@@ -26,13 +32,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 Container(
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(
-                        top: 100, bottom: 30, right: 10, left: 50),
+                        top: 170, bottom: 30, right: 10, left: 60),
                     child: Text(
                       'Signup Here!',
-                      style: TextStyle(
+                      style: GoogleFonts.montserrat(
                           color: Colors.black,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500),
                     )),
                 SingleChildScrollView(
                   child: Container(
@@ -48,10 +54,11 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Column(
                             children: [
                               TextField(
+                                controller: _nameController,
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.edit),
-                                  labelText: 'First name',
+                                  labelText: 'Name',
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(
@@ -62,10 +69,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 10,
                               ),
                               TextField(
+                                controller: _emailController,
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.edit),
-                                  labelText: 'Last name',
+                                  labelText: 'email',
                                   fillColor: Colors.white,
                                   filled: true,
                                   border: OutlineInputBorder(
@@ -76,6 +84,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 10,
                               ),
                               TextField(
+                                controller: _passwordController,
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.password_rounded),
@@ -90,6 +99,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: 10,
                               ),
                               TextField(
+                                controller: _confirmPasswordController,
                                 style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.security_rounded),
@@ -110,8 +120,26 @@ class _SignUpPageState extends State<SignUpPage> {
                                     backgroundColor: Colors.blue,
                                     child: IconButton(
                                       onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, 'home page');
+                                        if(_passwordController.text !="" &&_confirmPasswordController.text != ""&&_passwordController.text == _confirmPasswordController.text){
+                                           var content = {
+                                          "userName" : _emailController.text,
+                                          "password" : _passwordController.text,
+                                          'name' : _nameController.text
+                                          };
+                                          writeToCredentialsFile(content);
+                                          ScaffoldMessenger.of(context).showSnackBar(successSnackBar);
+                                          Timer(Duration(seconds: 1)
+                                            , () =>Navigator.pushReplacementNamed(
+                                            context, 'signIn'));
+                                          
+                                        }
+                                        else{
+                                          ScaffoldMessenger.of(context).showSnackBar(passwordSnackBar);
+                                            _nameController.text = '';
+                                            _emailController.text = '';
+                                            _passwordController.text = '';
+                                            _confirmPasswordController.text = '';
+                                        } 
                                       },
                                       icon: Icon(Icons.arrow_forward),
                                     ),
@@ -124,15 +152,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                Padding(padding: EdgeInsets.only(left: 20)),
                               
                               Text('If U Have an Account?',
-                                  style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w900)),
+                                  style: GoogleFonts.montserrat(color: Colors.white,fontSize: 18,fontWeight: FontWeight.w500)),
                               TextButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(context, 'signin');
+                                    Navigator.pushReplacementNamed(context, 'signin');
                                   },
-                                  child: Text('signin',style: TextStyle(
-                                    fontSize: 20,
+                                  child: Text('signin',style: GoogleFonts.montserrat(
+                                    fontSize: 18,
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w500,
                                         decoration: TextDecoration.underline,
                                   ),))
                                   ],)
@@ -151,3 +179,6 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 }
+
+
+  

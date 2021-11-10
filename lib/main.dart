@@ -1,10 +1,18 @@
+import 'package:bookshelf/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_screen.dart';
 import 'search_screen.dart';
-import 'mybookshelf_screen.dart';
-import 'myprofile_screen.dart';
+import 'bookshelf_screen.dart';
+import 'profile_screen.dart';
 import 'settings.dart';
+import 'welcome.dart';
+import 'signin.dart';
+import 'signup.dart';
+
+import 'my_welcome_page.dart';
+import 'my_login_page.dart';
+import 'my_signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +26,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bookshelf',
-      home: MyHome(),
+      debugShowCheckedModeBanner: false,
+      initialRoute : 'welcomePage',
       routes: {
-        'settings' : (context)=> Settings(),
+        'welcomePage' : (context)=> const WelcomePage(),
+        'signIn' : (context)=>  SignInPage(),
+        'signUp' : (context)=> SignUpPage(),
+        'home' : (context)=> const MyHome(),
+        'settings' : (context)=> const Settings(),
+        'editProfile' : (context) => const EditProfile(),
       },
     );
   }
@@ -61,18 +75,10 @@ PreferredSizeWidget _myAppBar(context){
   return AppBar(
     title: Text("Bookshelf",style: GoogleFonts.montserrat(fontSize: 18,fontWeight: FontWeight.w500),),
     centerTitle: true,
-
+    elevation: 10,
     foregroundColor: Colors.black,
-    flexibleSpace: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin : Alignment.topLeft,
-          end: Alignment.bottomLeft,
-          colors: [Colors.pink,Colors.blue.shade400],
-        )
-      ),
-    ),
-    shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    backgroundColor: Colors.tealAccent.shade400,
+    shape: BeveledRectangleBorder(side: BorderSide(color: Colors.blueGrey,width: 1.5),borderRadius: BorderRadius.circular(10)),
   );
 }
 
@@ -87,7 +93,7 @@ Widget _bNavBar(context,index,func){
     currentIndex: index,
     showSelectedLabels: false,
     showUnselectedLabels: false,
-    selectedItemColor: Colors.greenAccent,
+    selectedItemColor: Colors.tealAccent.shade400,
     unselectedItemColor: Colors.grey,
     onTap: (i) {func(i);},
     );

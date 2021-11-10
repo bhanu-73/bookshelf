@@ -16,10 +16,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
       Container(
         padding:
-            const EdgeInsets.only(top: 20, bottom: 60, left: 20, right: 10),
-        margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+            const EdgeInsets.only(top: 20, bottom: 80, left: 20, right: 10),
+        margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
         decoration: BoxDecoration(
-            color: Colors.grey.shade300,
+            color: Colors.grey.shade200,
             borderRadius: BorderRadius.circular(20)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,12 +68,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       SizedBox( child : Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children : [
-          _myBox(context, "EditProfile", () {}),
+          _myBox(context, "EditProfile", () {
+            Navigator.pushNamed(context, 'editProfile');
+          }),
       _myBox(context, "Settings", () {
         Navigator.pushNamed(context, 'settings');
       }),
       _myBox(context, "About Us", () {}),
-      _myBox(context, "Log Out", () {})
+      _myBox(context, "Log Out", () {
+        Navigator.pushReplacementNamed(context, 'signIn');
+      })
           ]
         ),
       )
@@ -87,10 +91,10 @@ Widget _myBox(context, name, func) {
       onTap: func,
       child: Container(
         padding: const EdgeInsets.all(20),
-        margin: const EdgeInsets.fromLTRB(20, 10, 20, 15),
+        margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.grey.shade300,
+          color: Colors.grey.shade200,
           //border: Border.all(color: Colors.greenAccent, width: 1),
         ),
         child: Row(

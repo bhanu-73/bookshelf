@@ -14,7 +14,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   static String query = "";
-  final key = "AIzaSyBwQSmI7gVOfV-bK6zfVC1OBjHe7rSa9Fs";
+  final key = "AIzaSyAXXIZJ3FB6SC6DCnq5SFt42PKAeQAPxjg";
   static dynamic _bookshelfContent;
   var myController = TextEditingController();
 
@@ -55,7 +55,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.tealAccent.shade400,
         onRefresh: () async {
           var content = await readFile();
           setState(() {
@@ -76,20 +76,20 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: TextField(
                       controller: myController,
                       enableSuggestions: true,
-                      cursorColor: Colors.greenAccent,
+                      cursorColor: Colors.tealAccent.shade400,
                       style: GoogleFonts.montserrat(color: Colors.black),
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12)),
-                        focusColor: Colors.greenAccent,
+                        focusColor: Colors.tealAccent.shade400,
                         labelText: "Search Books",
                         labelStyle: GoogleFonts.montserrat(fontSize: 16),
                         floatingLabelStyle:
-                            GoogleFonts.montserrat(color: Colors.greenAccent),
+                            GoogleFonts.montserrat(color: Colors.tealAccent.shade400),
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide:
-                                const BorderSide(color: Colors.greenAccent)),
+                                BorderSide(color: Colors.tealAccent.shade400,width: 2)),
                       ),
                     ),
                   ),
@@ -97,8 +97,8 @@ class _SearchScreenState extends State<SearchScreen> {
                 Padding(
                     padding: const EdgeInsets.only(top: 45, left: 10),
                     child: Container(
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.greenAccent),
+                        decoration:  BoxDecoration(
+                            shape: BoxShape.circle, color: Colors.tealAccent.shade400),
                         child: IconButton(
                             onPressed: () {
                               setState(() {
@@ -107,7 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     : "";
                               });
                             },
-                            icon: const Icon(Icons.arrow_forward))))
+                            icon: const Icon(Icons.arrow_forward,color:Colors.black))))
               ],
             ),
             FutureBuilder<List<dynamic>>(
@@ -283,8 +283,8 @@ class _TransformableContainerState extends State<TransformableContainer> {
         margin: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade300,
-            //border: Border.all(color: Colors.greenAccent, width: 2)
+            color: Colors.grey.shade200,
+            //border: Border.all(color: Colors.tealAccent.shade400, width: 2)
             ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -375,7 +375,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.greenAccent),
+                              MaterialStateProperty.all(Colors.tealAccent.shade400),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black)),
                       onPressed: () {
@@ -399,7 +399,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                                       ._bookshelfContent["volumeIds"]
                                       .indexWhere((id) => id == volumeId) ==
                                   -1)
-                              ? MaterialStateProperty.all(Colors.greenAccent)
+                              ? MaterialStateProperty.all(Colors.tealAccent.shade400)
                               : MaterialStateProperty.all(Colors.white),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black)),
@@ -448,8 +448,8 @@ class _TransformableContainerState extends State<TransformableContainer> {
         margin: const EdgeInsets.all(20),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade300,
-            //border: Border.all(color: Colors.greenAccent, width: 2)
+            color: Colors.grey.shade200,
+            //border: Border.all(color: Colors.tealAccent.shade400, width: 2)
             ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Row(
@@ -484,7 +484,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                         child: ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Colors.greenAccent),
+                                    Colors.tealAccent.shade400),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black),
                                 padding: MaterialStateProperty.all(
@@ -503,7 +503,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                                                 (id) => id == volumeId) ==
                                         -1)
                                     ? MaterialStateProperty.all(
-                                        Colors.greenAccent)
+                                        Colors.tealAccent.shade400)
                                     : MaterialStateProperty.all(Colors.white),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black),

@@ -21,12 +21,12 @@ class DetailedView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.tealAccent.shade400,
         foregroundColor: Colors.black,
-        elevation: 0,
+        elevation: 5,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top: 10, right: 10, left: 10),
+        padding: const EdgeInsets.only(top: 15, right: 15, left: 15),
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,12 +87,12 @@ class DetailedView extends StatelessWidget {
           ),
           Padding(
               padding: const EdgeInsets.only(
-                  top: 10, left: 10, right: 10, bottom: 10),
+                  top: 15, left: 0, right: 0, bottom: 10),
               child: ElevatedButton(
                   onPressed: () {_launchURL();},
                   style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.greenAccent),
+                          MaterialStateProperty.all(Colors.tealAccent.shade400),
                       foregroundColor: MaterialStateProperty.all(Colors.black)),
                   child: Text(
                     "Open Book in Store",
@@ -105,7 +105,7 @@ class DetailedView extends StatelessWidget {
           ),
           (publishedDate != null)
               ? Padding(
-                  padding: const EdgeInsets.only(top:5,left: 10),
+                  padding: const EdgeInsets.only(top:10,left: 10),
                   child: Text("Published Date : $publishedDate",
                       style: GoogleFonts.montserrat(
                           fontSize: 18,

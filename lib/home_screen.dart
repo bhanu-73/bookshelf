@@ -5,14 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'detailed_view.dart';
 
-const key = "AIzaSyBwQSmI7gVOfV-bK6zfVC1OBjHe7rSa9Fs";
+const myKey = "AIzaSyBwQSmI7gVOfV-bK6zfVC1OBjHe7rSa9Fs";
+const aKey = "AIzaSyAXXIZJ3FB6SC6DCnq5SFt42PKAeQAPxjg";
 
 Future<List<dynamic>> getBooks(List ids) async {
   List<dynamic> books = [];
   for (var id in ids) {
     var response = await http.get(
-        Uri.parse("https://www.googleapis.com/books/v1/volumes/$id?key=$key"));
+        Uri.parse("https://www.googleapis.com/books/v1/volumes/$id?key=$aKey"));
     if (response.statusCode == 200) {
       books.add(json.decode(response.body));
     }
@@ -82,7 +84,8 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.montserrat(
                   fontSize: 20, fontWeight: FontWeight.w500),
             )),
-            Builder(_content["topChartsFree"]),
+           // Builder(_content["topChartsFree"]),
+             _categoriesContainer(context),
             Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -90,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.montserrat(
                   fontSize: 20, fontWeight: FontWeight.w500),
             )),
-            Builder(_content["topChartsPaid"]),
+            //Builder(_content["topChartsPaid"]),
             Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -98,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.montserrat(
                   fontSize: 20, fontWeight: FontWeight.w500),
             )),
-            Builder(_content["genere"]["Entertainment"]),
+           // Builder(_content["genere"]["Entertainment"]),
             Padding(
             padding: const EdgeInsets.only(left: 10),
             child: Text(
@@ -106,7 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.montserrat(
                   fontSize: 20, fontWeight: FontWeight.w500),
             )),
-            Builder(_content["genere"]["ScienceFiction"]),
+           // Builder(_content["genere"]["ScienceFiction"]),
+       
             
 
       ],
@@ -135,31 +139,53 @@ class _BuilderState extends State<Builder> {
     return Container(
       margin: const EdgeInsets.only(top:10,bottom: 15),
       decoration: BoxDecoration(
+        //boxShadow: [BoxShadow(blurRadius: 1)],
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.shade300
+        color: Colors.grey.shade200
         //border: Border.all(color: Colors.greenAccent)
       ),
-      height: MediaQuery.of(context).size.height*0.27,
+      height: MediaQuery.of(context).size.height*0.29,
       child: FutureBuilder<List<dynamic>>(
         future: getBooks(widget.ids),
         builder: (context, snapshot) {
           if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
-                //itemCount: widget.ids.length,
+                itemCount: widget.ids.length,
                 itemBuilder: (context, index) {
                   return _bookContainer(
                     context,
-                    (snapshot.data![index%3]["volumeInfo"]["imageLinks"] != null)
-                        ? snapshot.data![index%3]["volumeInfo"]["imageLinks"]
+                    (snapshot.data![index]["volumeInfo"]["imageLinks"] != null)
+                        ? snapshot.data![index]["volumeInfo"]["imageLinks"]
                             ["smallThumbnail"]
                         : null,
-                        snapshot.data![index%3]["volumeInfo"]["title"],
+                        (snapshot.data![index]["volumeInfo"]
+                                              ["imageLinks"] !=
+                                          null)
+                                      ? snapshot.data![index]["volumeInfo"]
+                                          ["imageLinks"]["thumbnail"]
+                                      : null,
+                        snapshot.data![index]["volumeInfo"]["title"],
+                        snapshot.data![index]["volumeInfo"]
+                                      ["authors"],
+                                  snapshot.data![index]["volumeInfo"]
+                                      ["pageCount"],
+                                  snapshot.data![index]["volumeInfo"]
+                                      ["publisher"],
+                                  snapshot.data![index]["volumeInfo"]
+                                      ["publishedDate"],
+                                  snapshot.data![index]["volumeInfo"]
+                                      ["description"],
+                                  snapshot.data![index]["id"],
+                                  snapshot.data![index]["volumeInfo"]
+                                      ["language"],
+                                  snapshot.data![index]["volumeInfo"]["printType"],
+                                  snapshot.data![index]["volumeInfo"]["previewLink"]
                   );
                 });
           }
           else if(snapshot.connectionState == ConnectionState.waiting){
-            return const Center(child : CircularProgressIndicator());
+            return const Center(child : CircularProgressIndicator(color: Colors.greenAccent,));
           }
           return Center(
             child: Text(
@@ -171,8 +197,12 @@ class _BuilderState extends State<Builder> {
   }
 }
 
-Widget _bookContainer(context, img,title) {
-  return Container(
+Widget _bookContainer(context, img,imgXL,title,author,pages,publisher,publishedDate,desc,id,lang,type,link) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedView(imgXL, title, author, pages, publisher, publishedDate, lang, type, desc, link)));
+    },
+    child : Container(
     width: 130,
     margin : const EdgeInsets.all(10),
     padding: const EdgeInsets.only(right: 10,left: 10), 
@@ -180,12 +210,12 @@ Widget _bookContainer(context, img,title) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(top:10),
-          child: (img != null)
+          padding: const EdgeInsets.only(top:10,bottom: 10),
+          child: (imgXL != null)
               ? Image.network(
-                  img,
+                  imgXL,
                   height: 125,
-                  width: 90,
+                  width: 100,
                 )
               : Container(
                   height: 125,
@@ -202,10 +232,94 @@ Widget _bookContainer(context, img,title) {
         Expanded(
         child :Padding(
           padding : const EdgeInsets.only(top:3),
-          child : Text("$title",textAlign: TextAlign.center,overflow: TextOverflow.clip,style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.w500),) 
+          child : Text("$title",textAlign: TextAlign.center,overflow: TextOverflow.fade,style: GoogleFonts.montserrat(fontSize: 16,fontWeight: FontWeight.w500),) 
         ))
       ],
     ),
-  );
+  ));
 }
 
+Widget _categoriesContainer(context){
+  return Container(
+      margin: const EdgeInsets.only(top:10,bottom: 15),
+      padding: const EdgeInsets.only(top: 20,bottom: 20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.grey.shade200
+        //border: Border.all(color: Colors.greenAccent)
+      ),
+      //height: MediaQuery.of(context).size.height*0.5,
+      child: Column(children: [
+        
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+         Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Entertainment",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Science Fiction",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          )
+        ],),
+        const SizedBox(height: 20,),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+         Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Education",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Mysteries",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          )
+        ],),
+        const SizedBox(height: 20,),
+      Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+         Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Fiction",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width*0.40,
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Colors.tealAccent.shade400
+            ),
+            child : Text("Comics",textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,style: GoogleFonts.montserrat(fontSize:16,fontWeight:FontWeight.w500))
+          )
+        ],),
+        
+      ],),
+      );
+}

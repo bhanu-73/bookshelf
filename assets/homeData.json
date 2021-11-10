@@ -1,21 +1,85 @@
 {
     "topChartsFree" : [
-            "oXZLDwAAQBAJ",
             "Qgn5DwAAQBAJ",
-            "v2cNEAAAQBAJ"
+            "7sTIZN3CWecC",
+            "3cMaAgAAQBAJ",
+            "pGhZDwAAQBAJ",
+            "oXZLDwAAQBAJ",
+            "PcTkDwAAQBAJ",
+            "aH3kDwAAQBAJ",
+            "FPmfDwAAQBAJ",
+            "VoGuDwAAQBAJ"
+                        
     ], 
     "topChartsPaid" : [
-        "oXZLDwAAQBAJ",
-        "Qgn5DwAAQBAJ",
-        "v2cNEAAAQBAJ"
-
+        "DxmKzQEACAAJ",
+        "AXVUqdzi3rsC",
+        "RxxwnkPHlfEC",
+        "evk_EAAAQBAJ",
+        "ry9GEAAAQBAJ",
+        "NX5nzgEACAAJ",
+        "RMd3GpIFxcUC",
+        "MXj0THxYdkMC"
     ],
     "genere" :{
-        "Entertainment" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
-        "ScienceFiction" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
-        "Education" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
-        "Mysteries" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
-        "Fiction" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"],
-        "Comics" : ["oXZLDwAAQBAJ","Qgn5DwAAQBAJ","v2cNEAAAQBAJ"]
+        "Entertainment" : [
+            "5tgpDwAAQBAJ",
+            "mdy1CgAAQBAJ",
+            "XzcNEAAAQBAJ",
+            "DGlr2HLstRsC",
+            "qiFjDwAAQBAJ",
+            "07MwcN48SCkC",
+            "csa9jwEACAAJ"
+        ],
+        "ScienceFiction" : [
+            "hffZtgAACAAJ",
+            "F8u01NaEZU0C",
+            "IKt3oAEACAAJ",
+            "e4rYBQAAQBAJ",
+            "FzVjBgAAQBAJ",
+            "H6U7PgAACAAJ",
+            "rXHOtAEACAAJ"    
+        ],
+        "Education" : [
+            "nAmyDwAAQBAJ",
+            "0WbZmQEACAAJ",
+            "ivAz7XpcvQAC",
+            "w_YBwwEACAAJ",
+            "AFO6jWqD1jIC",
+            "opkuDwAAQBAJ",
+            "VuwN_tnazNkC"
+        ],
+        "Mysteries" : [
+            "UYE0zgEACAAJ",
+            "bsqXDwAAQBAJ",
+            "evk_EAAAQBAJ",
+            "1VQqEAAAQBAJ",
+            "ZowrEAAAQBAJ",
+            "Vy9GEAAAQBAJ",
+            "u93MskDVniAC",
+            "lTzYDwAAQBAJ",
+            "O819DwAAQBAJ",
+            "4yA9lwEACAAJ"
+        ],
+        "Fiction" : [
+            "BwAvEAAAQBAJ",
+            "lPXal0lzDKwC",
+            "s6yQZgoKWMwC",
+            "8y0hEAAAQBAJ",
+            "uC_QpUu0aFsC",
+            "XlrMDwAAQBAJ",
+            "Ys6KDQAAQBAJ",
+            "fg3ACwAAQBAJ"
+        ],
+        "Comics" : [
+            "alnMvgEACAAJ",
+            "WqmFDwAAQBAJ",
+            "G6lbyQEACAAJ",
+            "g-5ugEACAAJ",
+            "nYMWKQEACAAJ",
+            "2jpFLgEACAAJ",
+            "dejeAAAAQBAJ",
+            "mqDldpdmBP0C"
+        ]
     }
 }

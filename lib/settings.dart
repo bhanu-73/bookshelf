@@ -28,7 +28,7 @@ class _SettingsState extends State<Settings> {
             fontWeight: FontWeight.w500,
           ),
         ),
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.tealAccent.shade400,
         foregroundColor: Colors.black,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
@@ -63,7 +63,7 @@ class _SettingsState extends State<Settings> {
                         _notify = !_notify;
                       });
                     },
-                    activeColor: Colors.greenAccent,
+                    activeColor: Colors.tealAccent.shade400,
                   )
                 ],
               ),
@@ -99,7 +99,7 @@ class _SettingsState extends State<Settings> {
                         _smsNotify = !_smsNotify;
                       });
                     },
-                    activeColor: Colors.greenAccent,
+                    activeColor: Colors.tealAccent.shade400,
                   )
                 ],
               ),
@@ -135,7 +135,7 @@ class _SettingsState extends State<Settings> {
                         _emailNotify = !_emailNotify;
                       });
                     },
-                    activeColor: Colors.greenAccent,
+                    activeColor: Colors.tealAccent.shade400,
                   )
                 ],
               ),
@@ -166,7 +166,7 @@ class _SettingsState extends State<Settings> {
       ),
       DropdownButton(
         underline: Container(
-          color: Colors.greenAccent,
+          color: Colors.tealAccent.shade400,
           height: 2,
         ),
         value: _lang,

@@ -14,7 +14,7 @@ class BookshelfScreen extends StatefulWidget {
 
 class _BookshelfScreenState extends State<BookshelfScreen> {
   static dynamic _content;
-  final key = "AIzaSyBwQSmI7gVOfV-bK6zfVC1OBjHe7rSa9Fs";
+  final key = "AIzaSyAXXIZJ3FB6SC6DCnq5SFt42PKAeQAPxjg";
 
   Future<void> getContent() async {
     _content = await readFile();
@@ -69,7 +69,7 @@ class _BookshelfScreenState extends State<BookshelfScreen> {
                   padding: const EdgeInsets.only(top: 15, right: 20),
                   child: Container(
                     decoration: BoxDecoration(
-                        color: Colors.greenAccent,
+                        color: Colors.tealAccent.shade400,
                         borderRadius: BorderRadius.circular(10)),
                     child: IconButton(
                       onPressed: () async {
@@ -335,7 +335,8 @@ class _TransformableContainerState extends State<TransformableContainer> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.greenAccent),
+                              MaterialStateProperty.all(Colors.tealAccent.shade400
+),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black)),
                       onPressed: () {_launchDetailedView();},
@@ -357,7 +358,8 @@ class _TransformableContainerState extends State<TransformableContainer> {
                                       ._content["volumeIds"]
                                       .indexWhere((id) => id == volumeId) !=
                                   -1)
-                              ? MaterialStateProperty.all(Colors.greenAccent)
+                              ? MaterialStateProperty.all(Colors.tealAccent.shade400
+)
                               : MaterialStateProperty.all(Colors.white),
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black)),
@@ -437,7 +439,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                         child: ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Colors.greenAccent),
+                                    Colors.tealAccent.shade400),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black),
                                 padding: MaterialStateProperty.all(
@@ -454,7 +456,7 @@ class _TransformableContainerState extends State<TransformableContainer> {
                                                 (id) => id == volumeId) !=
                                         -1)
                                     ? MaterialStateProperty.all(
-                                        Colors.greenAccent)
+                                        Colors.tealAccent.shade400)
                                     : MaterialStateProperty.all(Colors.white),
                                 foregroundColor:
                                     MaterialStateProperty.all(Colors.black),
