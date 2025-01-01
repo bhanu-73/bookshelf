@@ -6,19 +6,19 @@ interface that allows users to browse through different categories and genres to
 # Screenshots
  
 <p>
-<img src="screenshots/s1.jpeg" width="300">
-<img src="screenshots/s2.jpeg" width="300">
-<img src="screenshots/s3.jpeg" width="300">
-<img src="screenshots/s4.jpeg" width="300">
-<img src="screenshots/s5.jpeg" width="300">
-<img src="screenshots/s6.jpeg" width="300">
-<img src="screenshots/s7.jpeg" width="300">
-<img src="screenshots/s8.jpeg" width="300">
-<img src="screenshots/s9.jpeg" width="300">
-<img src="screenshots/s10.jpeg" width="300">
-<img src="screenshots/s11.jpeg" width="300">
-<img src="screenshots/s12.jpeg" width="300">
-<img src="screenshots/s13.jpeg" width="300">
+<img src="screenshots/s1.jpeg" width="250">
+<img src="screenshots/s2.jpeg" width="250">
+<img src="screenshots/s3.jpeg" width="250">
+<img src="screenshots/s4.jpeg" width="250">
+<img src="screenshots/s5.jpeg" width="250">
+<img src="screenshots/s6.jpeg" width="250">
+<img src="screenshots/s7.jpeg" width="250">
+<img src="screenshots/s8.jpeg" width="250">
+<img src="screenshots/s9.jpeg" width="250">
+<img src="screenshots/s10.jpeg" width="250">
+<img src="screenshots/s11.jpeg" width="250">
+<img src="screenshots/s12.jpeg" width="250">
+<img src="screenshots/s13.jpeg" width="250">
 </p>
 
 
